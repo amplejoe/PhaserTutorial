@@ -1,0 +1,5 @@
+body {background-image: url("../img/bg.png"); background-repeat: repeat; color: white;}
+a:link { text-decoration:  none; color: orange; }
+a:active { text-decoration:  none; color: white; }
+a:visited { text-decoration:  none; color: orange; }
+a:hover { text-decoration:  none; color: white; }
