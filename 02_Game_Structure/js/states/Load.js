@@ -26,8 +26,6 @@ Tutorial.Load.prototype =
     numImages = 10 // increase until you see the progress bar
     for (let i=0;i<numImages;i++)
       this.load.image('dummy'+i, "http://loremflickr.com/"+(320+i)+"/"+(240+i));
-
-
   },
   create: function()
   {
