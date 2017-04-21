@@ -20,7 +20,7 @@ Tutorial.Boot.prototype =
     // have any Display properties, hence renderer has to be set via 'this.game'
     this.game.renderer.renderSession.roundPixels = true;
 
-    // start Load state
+    // start next state
     this.state.start('Load');
   }
 };

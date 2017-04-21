@@ -26,12 +26,6 @@ Tutorial.Load.prototype =
 
     // assets
     this.load.image('logo', 'assets/sprites/phaser.png');
-    this.load.image('player', 'assets/sprites/phaser-dude.png');
-    this.load.image('platform', 'assets/sprites/platform.png');
-    // load some assets to slow down loading screen (requires internet)
-    numImages = 10 // increase until you see the progress bar
-    for (let i=0;i<numImages;i++)
-      this.load.image('dummy'+i, "http://loremflickr.com/"+(320+i)+"/"+(240+i));
   },
   loadUpdate: function()
   {
@@ -40,7 +34,7 @@ Tutorial.Load.prototype =
   },
   create: function()
   {
-    // start Title state
-    this.state.start('Title');
+    // start next state
+    this.state.start('Game');
   }
 };
