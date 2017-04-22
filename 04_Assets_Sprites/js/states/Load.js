@@ -24,9 +24,30 @@ Tutorial.Load.prototype =
     //progressBar.anchor.setTo(0.5, 0.5);
     this.load.setPreloadSprite(progressBar); // automatically scales progress bar
 
-    // assets
+    /* assets */
+
+    // simple image
     this.load.image('logo', 'assets/sprites/phaser.png');
-  },
+
+    // atlas, no mapping file (MUST exacly know tile sizes - here 32x32)
+    this.load.spritesheet('chests', 'assets/sprites/sheets/Chests/chests_32x32.png', 32, 32);
+
+    // Spritesheets with accompanying Map files -
+    // for utilized tools & copyright information see extras/tools folder
+
+    // XML mapped atlas, created with ShoeBox (XML should be in UTF-8)
+    this.load.atlasXML('nes_xml', 'assets/sprites/sheets/NES_Style_Tiles/xml_shoebox/sprites.png',
+      'assets/sprites/sheets/NES_Style_Tiles/xml_shoebox/sprites.xml');
+
+    // JSON Hash mapped atlas, created with Sprite Sheet Packer & user JSON Hash extension
+    this.load.atlasJSONHash('nes_json_hash', 'assets/sprites/sheets/NES_Style_Tiles/JSONHash_spritesheetpacker/atlas.png',
+      'assets/sprites/sheets/NES_Style_Tiles/JSONHash_spritesheetpacker/atlas.json');
+
+    //JSON Array mapped atlas, created with Leshy SpriteSheet Tool
+    this.load.atlasJSONArray('nes_json_array', 'assets/sprites/sheets/NES_Style_Tiles/JSONArray_leshysstool/spritesheet.png',
+      'assets/sprites/sheets/NES_Style_Tiles/JSONArray_leshysstool/sprites.json');
+
+    },
   loadUpdate: function()
   {
     //console.log("Loading progress: " + this.load.progress + "%");

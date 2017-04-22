@@ -29,8 +29,13 @@ Tutorial.Load.prototype =
     // background
     this.load.image('wood', 'assets/sprites/textures/wood_by_EricHart3d.png');
 
+    // TODO: JSON mapped atlas flying bird using all sprites as animation
+    //this.game.load.atlasJSONHash("BIRD_FLYING",  Config.SPRITE_SHEETS_PATH+"bird.png",  Config.SPRITE_SHEETS_PATH+"bird_flying.json"); // sprite sheets
+
     // load atlas and corresponding XML (XML should be in UTF-8)
-    this.load.atlasXML('character', 'assets/sprites/anims/char_anim.png', 'assets/sprites/anims/char_anim.xml');
+    this.load.atlasXML('character', 'assets/sprites/anims/XML_Character/char_anim.png', 'assets/sprites/anims/XML_Character/char_anim.xml');
+
+
   },
   loadUpdate: function()
   {

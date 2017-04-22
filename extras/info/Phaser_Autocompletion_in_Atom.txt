@@ -1,0 +1,24 @@
+Autocompletion for Phaser in Atom Editor can be accomplished via tern, which is a stand-alone, editor-independent JavaScript analyzer. 
+A special tern plugin for the Phaser Framework (tern-phaser) is as well needed. Integration for Windows is described by HTML5 Game Dev Forums
+user Nathan Lovato on http://www.html5gamedevs.com/topic/17610-guide-phaser-auto-completion-in-atom-with-tern-phaser/, yet following
+workaround should work for all platforms:
+
+1. apm install atom-phaser
+
+2. Navigate to ~/.atom/packages/atom-ternjs
+		npm install tern
+		npm install tern-phaser
+
+3. Navigate to ~/.atom/packages/atom-ternjs/node_modules
+		copy /tern-phaser/phaser.js /tern/plugin
+
+4. Create a minimal .tern-project file in project root (always try to restart server via Packages > Atom Ternjs configure+save and restart/restart server)
+	
+		File .tern-project contents (see PhaserTutorial/.tern-project):
+	    {   "ecmaVersion": 5,   "libs": ["browser"],   "plugins": {     "phaser": {}   } }
+
+Copyright and Information:
+Atom Editor: https://atom.io
+Atom TernJs: https://github.com/tststs/atom-ternjs
+Tern Phaser: https://github.com/angelozerr/tern-phaser
+Nathan Lovato user profile: http://www.html5gamedevs.com/profile/10528-nathan-lovato/

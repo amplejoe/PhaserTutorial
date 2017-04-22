@@ -1,0 +1,10 @@
+<TextureAtlas imagePath="sprites.png">
+	<SubTexture name="NES_2_01.png" x="31" y="47" width="9" height="13"/>
+	<SubTexture name="NES_2_02.png" x="18" y="47" width="11" height="12"/>
+	<SubTexture name="NES_2_03.png" x="18" y="36" width="13" height="9"/>
+	<SubTexture name="NES_2_04.png" x="18" y="18" width="16" height="16"/>
+	<SubTexture name="NES_2_05.png" x="18" y="0" width="16" height="16"/>
+	<SubTexture name="NES_2_06.png" x="0" y="36" width="16" height="16"/>
+	<SubTexture name="NES_2_07.png" x="0" y="18" width="16" height="16"/>
+	<SubTexture name="NES_2_08.png" x="0" y="0" width="16" height="16"/>
+</TextureAtlas>
