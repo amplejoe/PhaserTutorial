@@ -26,6 +26,7 @@ Tutorial.Load.prototype =
 
     // assets
     this.load.image('logo', 'assets/sprites/phaser.png');
+    this.load.image('dude', 'assets/sprites/phaser-dude.png');
   },
   loadUpdate: function()
   {
