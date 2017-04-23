@@ -67,5 +67,10 @@ Tutorial.Game.prototype =
 
     if (!moving) this.character.animations.stop();
 
+  },
+  render: function ()
+  {
+    // debug text output
+    this.game.debug.text("Move with [L,R,U,D] arrow keys.", 5, Tutorial.SCREEN_HEIGHT - 10);
   }
 };
