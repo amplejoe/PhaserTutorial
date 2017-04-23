@@ -2,9 +2,6 @@
 Tutorial.Game = function (game)
 {
   /* members */
-  this.showDebug=false;
-  this.toggleDebugButton;
-  this.DebugRect;
 };
 
 Tutorial.Game.prototype =

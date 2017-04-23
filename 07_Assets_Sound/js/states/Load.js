@@ -30,7 +30,6 @@ Tutorial.Load.prototype =
   },
   loadUpdate: function()
   {
-    //console.log("Loading progress: " + this.load.progress + "%");
     this.loadingLabel.text = 'loading - ' + this.load.progress + '%';
   },
   create: function()

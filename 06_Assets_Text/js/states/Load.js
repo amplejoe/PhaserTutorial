@@ -26,16 +26,40 @@ Tutorial.Load.prototype =
 
     // assets
 
+    // Google Web Font
 
+    // Google's Loader Script (see js/states/Load.js) needs config object,
+    // hence it needs to be created first
+    WebFontConfig = {
+        // before starting game State (startGame) set 1 second delay after all requested
+        // fonts finished loading (=active), otherwise the browser cannot render
+        // the text the first time it's created ->
+        active: () => { this.time.events.add(Phaser.Timer.SECOND, this.startGame, this); }, // arrow function to avoid var self = this;
+        // Actual Font: pick one at https://fonts.google.com/
+        google:
+        {
+          families: ['Sofia']
+        }
+    };
+    //  Load Google WebFont Loader script
+    this.load.script('sofiawebfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+
+    // Bitmap Font (font spritesheet and map file)
+    this.load.bitmapFont('desyrel', 'assets/fonts/bitmap_font/desyrel.png', 'assets/fonts/bitmap_font/desyrel.xml');
+
+  },
+  startGame: function ()
+  {
+    console.log("Google Font Loaded!");
+    // start next state
+    this.state.start('Game');
   },
   loadUpdate: function()
   {
-    //console.log("Loading progress: " + this.load.progress + "%");
     this.loadingLabel.text = 'loading - ' + this.load.progress + '%';
   },
   create: function()
   {
-    // start next state
-    this.state.start('Game');
+    // do nothing here - wait for font loading delay
   }
 };
