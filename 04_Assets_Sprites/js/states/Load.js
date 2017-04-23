@@ -32,7 +32,7 @@ Tutorial.Load.prototype =
     // atlas, no mapping file (MUST exacly know tile sizes - here 32x32)
     this.load.spritesheet('chests', 'assets/sprites/sheets/Chests/chests_32x32.png', 32, 32);
 
-    // Spritesheets with accompanying Map files -
+    // Spritesheets with accompanying map files -
     // for utilized tools & copyright information see extras/tools folder
 
     // XML mapped atlas, created with ShoeBox (XML should be in UTF-8)
