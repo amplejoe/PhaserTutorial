@@ -11,8 +11,6 @@ Tutorial.Boot.prototype =
   {
     /** phaser settings **/
     this.stage.backgroundColor = '#525252';
-    // use arcade physics engine
-    this.physics.startSystem(Phaser.Physics.ARCADE);
     // ensure sprites are rendered at integer positions:
     // sprites rendered at non-integer (sub-pixel) positions appear blurry,
     // as canvas tries to anti-alias them between the two pixels.

@@ -25,5 +25,10 @@ Tutorial.Game.prototype =
       let dude = new Tutorial.PhaserDude(this, this.world.randomX, this.world.randomY, Math.random());
       this.add.existing(dude);
     }
+  },
+  render: function ()
+  {
+    // debug text output
+    this.game.debug.text("Press [F5] to reload and rearrange Phaser Dudes.", 5, Tutorial.SCREEN_HEIGHT - 10);
   }
 };
