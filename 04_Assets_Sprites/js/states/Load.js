@@ -36,8 +36,8 @@ Tutorial.Load.prototype =
     // for utilized tools & copyright information see extras/tools folder
 
     // XML mapped atlas, created with ShoeBox (XML should be in UTF-8)
-    this.load.atlasXML('nes_xml', 'assets/sprites/sheets/NES_Style_Tiles/xml_shoebox/sprites.png',
-      'assets/sprites/sheets/NES_Style_Tiles/xml_shoebox/sprites.xml');
+    this.load.atlasXML('nes_xml', 'assets/sprites/sheets/NES_Style_Tiles/XML_shoebox/sprites.png',
+      'assets/sprites/sheets/NES_Style_Tiles/XML_shoebox/sprites.xml');
 
     // JSON Hash mapped atlas, created with Sprite Sheet Packer & user JSON Hash extension
     this.load.atlasJSONHash('nes_json_hash', 'assets/sprites/sheets/NES_Style_Tiles/JSONHash_spritesheetpacker/atlas.png',
