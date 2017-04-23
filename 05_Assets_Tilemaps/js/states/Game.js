@@ -59,9 +59,13 @@ Tutorial.Game.prototype =
   },
   render: function()
   {
+    // world bounds debug
     if (this.showDebug)
       this.game.debug.geom(this.DebugRect, 'rgba(255,0,0,0.5)');
     else
       this.game.debug.geom(this.DebugRect, 'rgba(255,0,0,0.0)');
+    // debug text output
+    this.game.debug.text( "Press [SPACE] to show world bounds.", 5, Tutorial.SCREEN_HEIGHT - 10 );
+
   }
 };

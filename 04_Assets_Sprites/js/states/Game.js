@@ -28,7 +28,7 @@ Tutorial.Game.prototype =
     let chest_1 = chestGroup.create(x_coord, 10,'chests', 0); // 1st sprite
     let chest_2 = chestGroup.create(x_coord, 50,'chests', 4); // 5th sprite
     let chest_3 = chestGroup.create(x_coord, 90,'chests', 7); // 8th sprite
-    this.allGroups.push(chestGroup);
+    this.allGroups.push({name:"non-mapped", objects:chestGroup});
 
     // mapped Spritesheets
 
@@ -41,7 +41,7 @@ Tutorial.Game.prototype =
     xmlGroup.add(nes_xml_2);
     let nes_xml_3 = this.add.sprite(x_coord, 135,'nes_xml', 2); // 3rd sprite
     xmlGroup.add(nes_xml_3);
-    this.allGroups.push(xmlGroup);
+    this.allGroups.push({name:"XML", objects:xmlGroup});
 
     // JSON Hash
     let jsonHashGroup = this.add.group();
@@ -51,7 +51,7 @@ Tutorial.Game.prototype =
     let nes_json_hash_1 = jsonHashGroup.create(x_coord, 15,'nes_json_hash', "NES_2_resized_04.png"); // 4th sprite
     let nes_json_hash_2 = jsonHashGroup.create(x_coord, 85,'nes_json_hash', "NES_2_resized_05.png"); // 5th sprite
     let nes_json_hash_3 = jsonHashGroup.create(x_coord, 155,'nes_json_hash', "NES_2_resized_06.png"); // 6th sprite
-    this.allGroups.push(jsonHashGroup);
+    this.allGroups.push({name:"JSON Hash", objects:jsonHashGroup});
 
     // JSON Array
     let jsonArrayGroup = this.add.group();
@@ -59,7 +59,7 @@ Tutorial.Game.prototype =
     let nes_json_array_1 = jsonArrayGroup.create(x_coord, 15,'nes_json_array', 6); // 7th sprite
     let nes_json_array_2 = jsonArrayGroup.create(x_coord, 85,'nes_json_array', 7); // 8th sprite
     let nes_json_array_3 = jsonArrayGroup.create(x_coord, 155,'nes_json_array', 0); // 1st sprite
-    this.allGroups.push(jsonArrayGroup);
+    this.allGroups.push({name:"JSON Array", objects:jsonArrayGroup});
 
     // group selection keys
     this.selectKeys = this.input.keyboard.addKeys(
@@ -81,11 +81,14 @@ Tutorial.Game.prototype =
   render: function ()
   {
     // Debug: highlights all members of currently selected group
-    this.allGroups[this.activeGroupIndex].forEachAlive(
+    this.allGroups[this.activeGroupIndex].objects.forEachAlive(
       (member) =>
       {
         // https://phaser.io/examples/v2/debug/debug-sprite
         this.game.debug.spriteBounds(member);
       }, this);
+    // debug text output
+    this.game.debug.text("Press [1,2,3,4] to select sprite groups (selected: " +
+      this.allGroups[this.activeGroupIndex].name + ").", 5, Tutorial.SCREEN_HEIGHT - 10);
   }
 };

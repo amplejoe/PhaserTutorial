@@ -4,7 +4,9 @@ window.onload = function()
     /** GLOBALS */
 
     // game variable
-    let game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+    let SCREEN_WIDTH = 800;
+    let SCREEN_HEIGHT = 600;
+    var game = new Phaser.Game(SCREEN_WIDTH, SCREEN_HEIGHT, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
 
     // various
     let player;
@@ -58,5 +60,11 @@ window.onload = function()
       {
           player.body.velocity.y = -400;
       }
+    }
+
+    function render ()
+    {
+      // debug text output
+      game.debug.text("Move with [L,R] arrow keys and jump with [SPACE].", 5, SCREEN_HEIGHT - 10);
     }
 };

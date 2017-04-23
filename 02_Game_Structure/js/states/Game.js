@@ -53,5 +53,10 @@ Tutorial.Game.prototype =
     {
         this.player.body.velocity.y = -400;
     }
+  },
+  render: function ()
+  {
+    // debug text output
+    this.game.debug.text("Move with [L,R] arrow keys and jump with [SPACE].", 5, Tutorial.SCREEN_HEIGHT - 10);
   }
 };
