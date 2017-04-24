@@ -33,7 +33,8 @@ Tutorial.Load.prototype =
     WebFontConfig = {
         // before starting game State (startGame) set 1 second delay after all requested
         // fonts finished loading (=active), otherwise the browser cannot render
-        // the text the first time it's created ->
+        // the text the first time it's created
+        // (cf. http://www.html5gamedevs.com/topic/4225-how-do-you-use-a-webfont-in-phaser-exactly/)
         active: () => { this.time.events.add(Phaser.Timer.SECOND, this.startGame, this); }, // arrow function to avoid var self = this;
         // Actual Font: pick one at https://fonts.google.com/
         google:

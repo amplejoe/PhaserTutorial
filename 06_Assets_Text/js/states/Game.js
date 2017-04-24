@@ -6,15 +6,14 @@ Tutorial.Game = function(game)
   // system font
   this.textSystem;
   this.textSystemColorIndex = 0;
-
   // downloaded font
   this.textDownloaded;
-
   // Web Font
   this.textWeb;
-
   // bitmap font
   this.bitmapFont;
+  // font awesome
+  this.fontAwesome;
 };
 
 Tutorial.Game.prototype =
@@ -24,7 +23,7 @@ Tutorial.Game.prototype =
 
     // [1] system fonts
     let color = Tutorial.CLBR_SET3_12[0];
-    this.textSystem = this.add.text(this.world.centerX, this.world.height * 0.15,
+    this.textSystem = this.add.text(this.world.centerX, this.world.height * 0.10,
       "System Font: click to change color\n(current: " + color + ")",
       {
         // style
@@ -32,15 +31,15 @@ Tutorial.Game.prototype =
         fill: color,
         align: "center"
       });
-    this.textSystem.anchor.setTo(0.5, 0.5);
+    this.textSystem.anchor.setTo(0.5);
     this.textSystem.inputEnabled = true; // enable input events on text
-    this.textSystem.events.onInputDown.add(this.updateColor, this);
+    this.textSystem.events.onInputDown.add(this.updateColor, this); // set onclick function
 
     // [2] custom downloaded font from folder /assets/fonts (reference: see css/assets_text.css)
     // IMPORTANT: set font-family for body to this one and
     // add some dummy element (see 06_Assets_Text/index.html), else font wont show
     color = Tutorial.CLBR_SET3_12[1];
-    this.textDownloaded = this.add.text(this.world.centerX, this.world.height * 0.35,
+    this.textDownloaded = this.add.text(this.world.centerX, this.world.height * 0.30,
       "Downloaded Font: drag to move",
       {
         // style
@@ -48,20 +47,20 @@ Tutorial.Game.prototype =
         fill: color,
         align: "center"
       });
-    this.textDownloaded.anchor.setTo(0.5, 0.5);
+    this.textDownloaded.anchor.setTo(0.5);
     this.textDownloaded.inputEnabled = true; // enable input events on text
     this.textDownloaded.input.enableDrag(); // allow dragging of font
 
     // [3] Google Web Font (needs to be preconfigured - see Load.js)
-    this.textWeb = this.add.text(this.world.centerX, this.world.height * 0.55,
-      "Google Web Font",
+    this.textWeb = this.add.text(this.world.centerX, this.world.height * 0.50,
+      " Google Web Font ", // adding whitespace to text prevents unwanted left/right cropping
       {
         // style
         font: "40px Sofia",
         align: "center",
         strokeThickness: 3
       });
-    this.textWeb.anchor.setTo(0.5, 0.5);
+    this.textWeb.anchor.setTo(0.5);
     let gradient = this.textWeb.context.createLinearGradient(0, 0, 0, this.textWeb.canvas.height);
     gradient.addColorStop(0, Tutorial.CLBR_SET3_12[2]);
     gradient.addColorStop(1, Tutorial.CLBR_SET3_12[3]);
@@ -69,8 +68,22 @@ Tutorial.Game.prototype =
     this.textWeb.setShadow(5, 5, 'rgba(0,0,0,0.5)', 5);
 
     // [4] bitmap Font
-    this.bitmapFont = this.add.bitmapText(this.world.centerX, this.world.height * 0.75, 'desyrel', 'Bitmap Font', 64);
-    this.bitmapFont.anchor.setTo(0.5, 0.5);
+    this.bitmapFont = this.add.bitmapText(this.world.centerX, this.world.height * 0.70, 'desyrel', 'Bitmap Font', 64);
+    this.bitmapFont.anchor.setTo(0.5);
+
+    // [5] Font Awesome (list of icon codes: http://fontawesome.io/cheatsheet/, change '&#x' to \u)
+    color = Tutorial.CLBR_SET3_12[4];
+    this.fontAwesome = this.add.text(this.world.centerX, this.world.height * 0.90,
+    'Font Awesome: \uf013 \uf15b \uf049 \uf04c \uf04b \uf050',
+    {
+      fill: color,
+      align: "center",
+      font: '40px fontAwesome'
+    });
+    this.fontAwesome.anchor.setTo(0.5);
+    // change color of single character (cogwheel)
+    this.fontAwesome.addColor(Tutorial.CLBR_SET3_12[6], 14); // change color starting from letter 14 (begin counting from 0)
+    this.fontAwesome.addColor(color, 15); // change color again starting from letter 15
 
   },
   updateColor: function (object)
