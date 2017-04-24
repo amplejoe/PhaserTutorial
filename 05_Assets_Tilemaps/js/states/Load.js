@@ -21,7 +21,6 @@ Tutorial.Load.prototype =
       this.world.centerY + 30, 'progressBar');
     let progressBarOutline = this.add.sprite(this.world.centerX - (0.5 * this.cache.getImage('progressBarOutline').width),
       this.world.centerY + 30, 'progressBarOutline');
-    //progressBar.anchor.setTo(0.5, 0.5);
     this.load.setPreloadSprite(progressBar); // automatically scales progress bar
 
     // assets

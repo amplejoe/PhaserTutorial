@@ -84,7 +84,7 @@ Tutorial.Game.prototype =
     {
       fill: this.faBaseColor,
       align: "center",
-      font: '40px fontAwesome'
+      font: '40px Font Awesome'
     });
     this.fontAwesome.anchor.setTo(0.5);
     // for changing icon colors on button press
