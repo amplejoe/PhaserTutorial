@@ -4,7 +4,9 @@ Tutorial.Game = function (game)
   /* members */
   this.keyControls;
   this.music;
+  this.NUM_SFX = 9;
   this.sfx;
+  this.audioSprite;
 };
 
 Tutorial.Game.prototype =
@@ -34,6 +36,10 @@ Tutorial.Game.prototype =
       ping: this.add.audio('ping'),
     };
 
+    // audio sprite
+    this.audioSprite = this.add.audioSprite('audio_sprite');
+    this.audioSprite.allowMultiple = true;
+
     // Key Controls
 
     // define tutorial keyboard controls
@@ -43,7 +49,13 @@ Tutorial.Game.prototype =
       'p': Phaser.KeyCode.P,
       'one': Phaser.KeyCode.ONE,
       'two': Phaser.KeyCode.TWO,
-      'three': Phaser.KeyCode.THREE
+      'three': Phaser.KeyCode.THREE,
+      'four': Phaser.KeyCode.FOUR,
+      'five': Phaser.KeyCode.FIVE,
+      'six': Phaser.KeyCode.SIX,
+      'seven': Phaser.KeyCode.SEVEN,
+      'eight': Phaser.KeyCode.EIGHT,
+      'nine': Phaser.KeyCode.NINE,
     });
 
     // start / stop music
@@ -64,6 +76,14 @@ Tutorial.Game.prototype =
     this.selectKeys.two.onDown.add(() => {this.sfx.laser.play()}, this);
     this.selectKeys.three.onDown.add(() => {this.sfx.ping.play()}, this);
 
+    // see assets/audio/sfx/audio_sprite/fx_mixdown.json for keys
+    this.selectKeys.four.onDown.add(() => {this.audioSprite.play('alien death')}, this);
+    this.selectKeys.five.onDown.add(() => {this.audioSprite.play('numkey')}, this);
+    this.selectKeys.six.onDown.add(() => {this.audioSprite.play('meow')}, this);
+    this.selectKeys.seven.onDown.add(() => {this.audioSprite.play('squit')}, this);
+    this.selectKeys.eight.onDown.add(() => {this.audioSprite.play('death')}, this);
+    this.selectKeys.nine.onDown.add(() => {this.audioSprite.play('shot')}, this);
+
   },
   render: function()
   {
@@ -78,6 +98,6 @@ Tutorial.Game.prototype =
       musicTxt2 = ", [P] to "+txt+"";
     }
     this.game.debug.text( "Music "+musicStatus+": Press [M] to "+musicTxt1+" music"+musicTxt2+".", 5, Tutorial.SCREEN_HEIGHT - 30 );
-    this.game.debug.text( "Use [1-"+Object.keys(this.sfx).length+"] keys to play different SFX.", 5, Tutorial.SCREEN_HEIGHT - 10 );
+    this.game.debug.text( "Use [1-"+this.NUM_SFX+"] keys to play different SFX.", 5, Tutorial.SCREEN_HEIGHT - 10 );
   }
 };

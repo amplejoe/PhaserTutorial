@@ -35,11 +35,18 @@ Tutorial.Load.prototype =
     let laser = this.load.audio('laser', 'assets/audio/sfx/lazer_wall_off.mp3');
     let ping = this.load.audio('ping', 'assets/audio/sfx/p-ping.mp3');
 
+    // audio sprite: a sound object with related marker data representing sections of the audio
+    // its segments can either be defined when it's added to the game via addMarker (see https://phaser.io/examples/v2/audio/audio-sprite),
+    // or more preferably using an accompanying JSON Hash file as is demonstrated in this Tutorial (format: https://github.com/tonistiigi/audiosprite)
+    //let audioSpriteConfig = this.load.json('audio_sprite-audioatlas', 'assets/audio/sfx/audio_sprite/fx_mixdown.json');
+    //let audioSprite = this.load.audio('audio_sprite', 'assets/audio/sfx/audio_sprite/fx_mixdown.ogg');
+    let audioSprite = this.load.audiosprite('audio_sprite', 'assets/audio/sfx/audio_sprite/fx_mixdown.ogg', 'assets/audio/sfx/audio_sprite/fx_mixdown.json');
+
     // All used keys to be able to wait for sound file decoding (see create)
     // INFO: here we use 'load' to add audio to the Phaser Cache,
     // therefore we need to pass cache keys to to setDecodedCallback,
     // as opposed to the actual audio objects when using 'add' (see e.g. https://phaser.io/examples/v2/audio/loop)
-    this.audioKeys = [ 'music', 'explosion', 'laser', 'ping' ];
+    this.audioKeys = [ 'music', 'explosion', 'laser', 'ping', 'audio_sprite' ];
 
   },
   create: function()
