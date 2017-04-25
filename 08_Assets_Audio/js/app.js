@@ -1,7 +1,7 @@
 window.onload = function()
 {
     // game variable
-    Tutorial.phasergame = new Phaser.Game(Tutorial.SCREEN_WIDTH, Tutorial.SCREEN_HEIGHT, Phaser.AUTO);
+    Tutorial.phasergame = new Phaser.Game(Tutorial.SCREEN_WIDTH, Tutorial.SCREEN_HEIGHT);
 
     // add states
     Tutorial.phasergame.state.add('Boot', Tutorial.Boot);
