@@ -25,6 +25,9 @@ Tutorial.Load.prototype =
 
     // assets
 
+    // load texture image
+    let tileSprite = this.load.image('tex_starfield', 'assets/textures/starfield.jpg');
+
   },
   loadUpdate: function()
   {
