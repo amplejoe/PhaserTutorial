@@ -2,6 +2,7 @@ Tutorial.Load = function(game)
 {
   // label for displaying loading information
   this.loadingLabel;
+  this.audioKeys;
 };
 
 Tutorial.Load.prototype =
@@ -25,25 +26,32 @@ Tutorial.Load.prototype =
 
     // assets
 
-    // background
+    /** background **/
     this.load.image('wood', 'assets/sprites/textures/wood_by_EricHart3d.png');
 
-    // TODO: JSON mapped atlas flying bird using all sprites as animation
-    //this.game.load.atlasJSONHash("BIRD_FLYING",  Config.SPRITE_SHEETS_PATH+"bird.png",  Config.SPRITE_SHEETS_PATH+"bird_flying.json"); // sprite sheets
+    /** spritesheets containing animations (see spritesheet tutorial for more info) **/
 
-    // load atlas and corresponding XML (XML should be in UTF-8)
+    // single animation characters (hatman, martian)
+    this.load.atlasJSONHash('hatman', 'assets/sprites/anims/JSON_Hatman/spritesheet.png', 'assets/sprites/anims/JSON_Hatman/sprites.json');
+    this.load.atlasJSONHash('martian', 'assets/sprites/anims/JSON_Martian/spritesheet.png', 'assets/sprites/anims/JSON_Martian/sprites.json');
+    // multiple animations character (controllable dude)
     this.load.atlasXML('character', 'assets/sprites/anims/XML_Character/char_anim.png', 'assets/sprites/anims/XML_Character/char_anim.xml');
 
+    /** audio **/
+    this.load.audio('step1', 'assets/audio/sfx/steps1.mp3');
+    this.load.audio('step2', 'assets/audio/sfx/steps2.mp3');
+    // All used audio keys to be able to wait for sound file decoding (see create)
+    this.audioKeys = [ 'step1', 'step2'];
 
+  },
+  create: function ()
+  {
+    // Wait for mp3s to be decoded, if completed start game state
+    this.sound.setDecodedCallback(this.audioKeys, () => {this.state.start('Game')}, this);
   },
   loadUpdate: function()
   {
     //console.log("Loading progress: " + this.load.progress + "%");
     this.loadingLabel.text = 'loading - ' + this.load.progress + '%';
-  },
-  create: function()
-  {
-    // start next state
-    this.state.start('Game');
   }
 };
