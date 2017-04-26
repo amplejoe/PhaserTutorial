@@ -1,0 +1,3 @@
+coin 
+
+public domaain, creator: https://opengameart.org/content/coins-pixel-art-silver-gold-crystal-and-more

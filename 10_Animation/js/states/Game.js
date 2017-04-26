@@ -79,7 +79,8 @@ Tutorial.Game.prototype =
     this.cursors = this.input.keyboard.createCursorKeys();
     this.sfx =
     {
-      steps: [this.add.audio('step1'), this.add.audio('step2')]
+      steps: [this.add.audio('step1'), this.add.audio('step2')],
+      ping: this.add.audio('ping')
     };
 
     // [3] dynamic animation
@@ -87,28 +88,31 @@ Tutorial.Game.prototype =
     let coin = this.make.sprite(0, 0, 'coin');
     let xAnchor = 0.5;
     coin.anchor.setTo(xAnchor, 0);
-    let num_frames = 32;
-    let spriteWidth = this.cache.getImage('coin').width;
-    let spriteHeight = this.cache.getImage('coin').height;
-
-    // First create a BitmapData object at the size we need (1
-    let bmd = this.add.bitmapData(spriteWidth * num_frames, spriteHeight);
-    let xPos = spriteWidth*xAnchor;
+    // create animation
+    let num_frames = 32; // length of animation sheet
+    // original coin image dimensions
+    let coinWidth = this.cache.getImage('coin').width;
+    let coinHeight = this.cache.getImage('coin').height;
+    // Create new bitmapdata for all num_frames images of to be created spritesheet
+    let bmData = this.add.bitmapData(coinWidth * num_frames, coinHeight);
+    let xPos = coinWidth*xAnchor; // start placing first frame at anchor position
     let yPos = 0;
+    // iterate from -16 to +16, scaling coin 32 times in x direction (around y-axis)
+    // this achieves a seamless rotation effect ()
     for (let i = -num_frames/2; i < num_frames/2; i++)
     {
-        let newScale = i/(num_frames/2-1);
+        let newScale = i/(num_frames/2);
         coin.scale.setTo(newScale,1.0);
-        bmd.draw(coin, xPos, yPos);
-        xPos += spriteWidth;
+        bmData.draw(coin, xPos, yPos); // draw current coin in bitmapData
+        xPos += coinWidth;
     }
-    // DEBUG: shows above drawn bitmap data
-    // this.add.image(0, 0, bmd);
-    this.cache.addSpriteSheet('dynamic', '', bmd.canvas, spriteWidth, spriteHeight, num_frames, 0, 0);
-    // dynamic animation keys
+    // DEBUG: uncomment to show above drawn bitmap data
+    // this.add.image(0, 0, bmData);
+    // add created bitmap data to Phaser Cache as wid id 'dynamic_coin'
+    this.cache.addSpriteSheet('dynamic_coin', '', bmData.canvas, coinWidth, coinHeight, num_frames, 0, 0);
+    // dynamic coin spawn key functionality
     this.coinSpawnButton = this.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
-    this.coinSpawnButton.onDown.add(() => {this.spawnCoin();}, this);
-
+    this.coinSpawnButton.onDown.add(() => {this.spawnCoin();}, this); // spawnCoin lets player drop a coin
 
   },
   update: function ()
@@ -229,12 +233,13 @@ Tutorial.Game.prototype =
   {
     let playerX = this.character.position.x;
     let playerY = this.character.position.y;
-    var animatedCoin = this.backGroup.create(playerX, playerY, 'dynamic');
+    var animatedCoin = this.backGroup.create(playerX, playerY, 'dynamic_coin');
     animatedCoin.anchor.setTo(0.5);
     animatedCoin.smoothed = false;
     animatedCoin.scale.setTo(5.0);
     animatedCoin.animations.add('float');
     animatedCoin.play('float', 20, true);
+    this.sfx.ping.play();
   },
   render: function ()
   {
