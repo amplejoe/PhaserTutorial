@@ -31,3 +31,9 @@ body
        url('../assets/fonts/downloaded/fontawesome4.7.0/fontawesome-webfont.ttf') format('truetype'), /* Safari, Android, iOS */
        url('../assets/fonts/downloaded/fontawesome4.7.0/fontawesome-webfont.svg#FontAwesome') format('svg'); /* Legacy iOS */
 }
+
+#dummy_for_downloaded_font
+{
+  position: absolute;
+  text-indent: -9999px;  /* moves text offscreen */
+}

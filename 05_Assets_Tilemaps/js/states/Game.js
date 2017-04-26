@@ -51,7 +51,7 @@ Tutorial.Game.prototype =
     this.DebugRect = new Phaser.Rectangle( 0, 0, this.world.width, this.world.height );
     this.toggleDebugButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     this.toggleDebugButton.onDown.add(
-      (key) =>
+      () =>
       {
         this.showDebug = !this.showDebug;
       }, this);
