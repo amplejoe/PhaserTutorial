@@ -36,6 +36,8 @@ Tutorial.Load.prototype =
     this.load.atlasJSONHash('martian', 'assets/sprites/anims/JSON_Martian/spritesheet.png', 'assets/sprites/anims/JSON_Martian/sprites.json');
     // multiple animations character (controllable dude)
     this.load.atlasXML('character', 'assets/sprites/anims/XML_Character/char_anim.png', 'assets/sprites/anims/XML_Character/char_anim.xml');
+    // dynamic animation: silver coin
+    this.coin = this.load.image('coin', 'assets/sprites/coin.png');
 
     /** audio **/
     this.load.audio('step1', 'assets/audio/sfx/steps1.mp3');
