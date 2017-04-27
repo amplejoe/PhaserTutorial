@@ -24,6 +24,9 @@ Tutorial.Load.prototype =
     this.load.setPreloadSprite(progressBar); // automatically scales progress bar
 
     // assets
+    this.load.image('bg', 'assets/kenney_physicsAssets_v2/bgs/colored_desert.png');
+    this.load.atlasXML('aliens', 'assets/kenney_physicsAssets_v2/Spritesheet/spritesheet_aliens.png','assets/kenney_physicsAssets_v2/Spritesheet/spritesheet_aliens.xml' );
+    this.load.atlasXML('stones', 'assets/kenney_physicsAssets_v2/Spritesheet/spritesheet_stone.png','assets/kenney_physicsAssets_v2/Spritesheet/spritesheet_stone.xml' );
 
   },
   loadUpdate: function()
