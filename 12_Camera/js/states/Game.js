@@ -18,6 +18,9 @@ Tutorial.Game = function (game)
 
   this.showBox = false; // bounding box
 
+  this.ScoreText;
+  this.score = 0;
+
 
 };
 
@@ -41,6 +44,12 @@ Tutorial.Game.prototype =
     this.char.body.gravity.y = this.gravity;
     // keys
     this.cursors = this.input.keyboard.createCursorKeys();
+
+    // score (fixed to camera)
+    let scorePos = {x: 32, y:  32};
+    this.ScoreText = this.add.text(scorePos.x, scorePos.y, "Score: " + this.score, { font: "32px Arial", fill: "#f26c4f", align: "left" });
+    this.ScoreText.fixedToCamera = true;
+    this.ScoreText.cameraOffset.setTo(scorePos.x, scorePos.y);
 
     // arcade physics invisible ground (http://www.html5gamedevs.com/topic/6194-invisible-walls/)
     this.customBottomBound = this.add.sprite(0, this.world.height * 0.87);
@@ -88,6 +97,8 @@ Tutorial.Game.prototype =
     if (this.buttons.jump.isDown && (this.char.body.onFloor() || this.char.body.touching.down))
     {
         this.char.body.velocity.y = -this.jumpVelocity;
+        this.score++;
+        this.ScoreText.text = "Score: " + this.score;
     }
 
   },
