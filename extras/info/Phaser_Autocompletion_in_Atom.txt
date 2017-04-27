@@ -3,7 +3,7 @@ A special tern plugin for the Phaser Framework (tern-phaser) is as well needed. 
 user Nathan Lovato on http://www.html5gamedevs.com/topic/17610-guide-phaser-auto-completion-in-atom-with-tern-phaser/, yet following
 workaround should work for all platforms:
 
-1. apm install atom-phaser
+1. apm install atom-ternjs
 
 2. Navigate to ~/.atom/packages/atom-ternjs
 		npm install tern
