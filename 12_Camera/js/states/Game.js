@@ -20,7 +20,7 @@ Tutorial.Game = function (game)
 
   this.ScoreText;
   this.score = 0;
-
+  this.shakeCamera = false;
 
 };
 
@@ -65,9 +65,11 @@ Tutorial.Game.prototype =
     // debug
     this.buttons = this.input.keyboard.addKeys({
       debug: Phaser.KeyCode.D,
-      jump: Phaser.KeyCode.SPACEBAR
+      jump: Phaser.KeyCode.SPACEBAR,
+      shake: Phaser.KeyCode.S
     });
     this.buttons.debug.onDown.add(() => {this.showBox = !this.showBox},this);
+    this.buttons.shake.onDown.add(() => {this.shakeCamera = !this.shakeCamera},this);
 
   },
   update: function()
@@ -97,8 +99,11 @@ Tutorial.Game.prototype =
     if (this.buttons.jump.isDown && (this.char.body.onFloor() || this.char.body.touching.down))
     {
         this.char.body.velocity.y = -this.jumpVelocity;
+        // increase score
         this.score++;
         this.ScoreText.text = "Score: " + this.score;
+        // conditional camera shaking
+        if (this.shakeCamera) this.camera.shake(0.05, 400); // duration, intensity
     }
 
   },
@@ -116,7 +121,9 @@ Tutorial.Game.prototype =
   {
 
     // debug text output
-    this.game.debug.text( "Move Character with [L,R] arrow keys, [D] to toggle debug info.", 5, Tutorial.SCREEN_HEIGHT - 10 );
+    let shakeTxt = this.shakeCamera ? "on" : "off";
+    this.game.debug.text( "Press [D] to toggle debug info. ", 5, Tutorial.SCREEN_HEIGHT - 30 );
+    this.game.debug.text( "Move Character with [L,R] arrow keys, [S] to toggle jump camera shake: " + shakeTxt + ".", 5, Tutorial.SCREEN_HEIGHT - 10 );
 
     if (!this.showBox) return;
 
