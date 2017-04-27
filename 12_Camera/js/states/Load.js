@@ -25,6 +25,11 @@ Tutorial.Load.prototype =
 
     // assets
 
+    this.load.image('bg','assets/sprites/bg_1200x600.png');
+    this.load.atlasJSONHash('hatman', 'assets/sprites/JSON_Hatman/spritesheet.png', 'assets/sprites/JSON_Hatman/sprites.json');
+
+
+
   },
   loadUpdate: function()
   {

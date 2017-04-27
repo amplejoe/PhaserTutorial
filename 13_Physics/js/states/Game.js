@@ -159,7 +159,6 @@ Tutorial.Game.prototype =
     this.customBottomBoundP2.addShape(new p2.Plane());
     sim.world.addBody(this.customBottomBoundP2);
 
-
     // arcade physics invisible wall (http://www.html5gamedevs.com/topic/6194-invisible-walls/)
     this.customBottomBoundArcade = this.add.sprite(0, this.lowerWorldBoundY);
     this.game.physics.arcade.enable(this.customBottomBoundArcade);
@@ -230,7 +229,7 @@ Tutorial.Game.prototype =
     this.game.debug.text("Press [1,2,3] to change Physics Systems - active: " + activePhysicsText, 5, Tutorial.SCREEN_HEIGHT - 30);
     this.game.debug.text("Press [D] to toggle bounding boxes.", 5, Tutorial.SCREEN_HEIGHT - 10);
 
-    // bouding boxes
+    // bounding boxes
 
     if (!this.showBounds)
     {
