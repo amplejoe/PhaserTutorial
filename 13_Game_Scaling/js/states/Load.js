@@ -24,7 +24,7 @@ Tutorial.Load.prototype =
     this.load.setPreloadSprite(progressBar); // automatically scales progress bar
 
     // assets
-
+    this.load.image("bg", 'assets/sprites/underwater-fantasy-files/PNG/underwater-fantasy-preview.png');
   },
   loadUpdate: function()
   {

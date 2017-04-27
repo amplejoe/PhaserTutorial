@@ -1,0 +1,37 @@
+{
+"level1": [
+    {
+        "type": "image",
+        "key": "image_1",
+        "url": "assets/pics/image_01.png",
+        "overwrite": false
+    },
+    {
+        "type": "audio",
+        "key": "audio_1",
+        "url": "assets/pics/audio_01.mp3",
+        "autoDecode": true
+    },
+    ...
+  ],
+  "level2": [
+      {
+          "type": "spritesheet",
+          "key": "character",
+          "url": "assets/pics/character_32x32.png",
+          "frameWidth": 32,
+          "frameHeight": 32,
+          "frameMax": 24,
+          "margin": 0,
+          "spacing": 0
+      }
+      ...
+    ],
+    "meta": {
+    "generated": "1401380327373",
+    "app": "Phaser Asset Packer",
+    "url": "http://phaser.io",
+    "version": "1.0",
+    "copyright": "Photon Storm Ltd. 2014"
+    }
+}

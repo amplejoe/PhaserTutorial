@@ -24,6 +24,8 @@ Tutorial.Load.prototype =
     this.load.setPreloadSprite(progressBar); // automatically scales progress bar
 
     // assets
+    this.load.image("bg", 'assets/sprites/kenney_physicsAssets_v2/bgs/colored_grass.png');
+    this.load.atlasJSONHash('bird', "assets/sprites/JSON_Bird/bird.png", "assets/sprites/JSON_Bird/bird_flying.json");
 
   },
   loadUpdate: function()
