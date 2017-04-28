@@ -28,6 +28,8 @@ Tutorial.Load.prototype =
     this.load.atlasXML('aliens', 'assets/kenney_physicsAssets_v2/Spritesheet/spritesheet_aliens.png','assets/kenney_physicsAssets_v2/Spritesheet/spritesheet_aliens.xml' );
     this.load.atlasXML('stones', 'assets/kenney_physicsAssets_v2/Spritesheet/spritesheet_stone.png','assets/kenney_physicsAssets_v2/Spritesheet/spritesheet_stone.xml' );
 
+    this.game.load.physics("physics", "assets/data.json");
+
   },
   loadUpdate: function()
   {

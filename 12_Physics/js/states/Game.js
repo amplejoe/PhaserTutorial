@@ -20,6 +20,7 @@ Tutorial.Game = function (game)
   this.alien;
 
   this.buttons;
+
 };
 
 Tutorial.Game.prototype =
@@ -54,9 +55,6 @@ Tutorial.Game.prototype =
             member.body.bounce.y = 0.60;
             member.body.bounce.x = 0.60;
             member.body.enable = true;
-            // random velocity
-            member.body.velocity.y = this.rnd.integerInRange(-500, 500);
-            member.body.velocity.x = this.rnd.integerInRange(-500, 500);
           }, this);
           this.environmentGroup.forEachAlive(
             (member) =>
@@ -77,15 +75,23 @@ Tutorial.Game.prototype =
             // member.body.velocity.y = 500;
             member.body.collideWorldBounds = true;
             member.body.enable = true;
-            // random velocity
-            member.body.velocity.y = this.rnd.integerInRange(-500, 500);
-            member.body.velocity.x = this.rnd.integerInRange(-500, 500);
           }, this);
           this.environmentGroup.forEachAlive(
           (member) =>
           {
             this.game.physics.p2.enable(member);
             member.body.collideWorldBounds = true;
+            // change body for triangles
+            if (member.isTriangle)
+            {
+              member.body.clearShapes(); // remove body
+              // load triangle polygon shape
+              // INFO: triangle shape (see assets/data.json):
+              // [66.5, 0, 135, 66.5, 0, 66.5] =>
+              // 3 points: [x.1,y.1,x.2,y.2,x.3,y.3]
+              member.body.loadPolygon("physics", "triangle");
+
+            }
             // member.body.static = true; // can not be moved
             member.body.enable = true;
           }, this);
@@ -102,8 +108,8 @@ Tutorial.Game.prototype =
     this.characterGroup = this.add.group();
     this.debugGroups = [this.characterGroup,this.environmentGroup];
 
-    //this.world.bounds.setTo(0, 0, this.world.width, this.world.height/2);
 
+    // increase lower bound of world for both phyiscs systems
     this.createLowerWorldBound();
 
     // background
@@ -114,11 +120,21 @@ Tutorial.Game.prototype =
     // ball
     let char = this.characterGroup.create(this.world.centerX, 50, 'aliens', "alienYellow_round.png");
     char.anchor.setTo(0.5);
+    char.inputEnabled = true; // enable click events
+    char.events.onInputDown.add(
+    () =>
+    {
+      this.pushBall();
+    });
 
-
-    // stone
-    let stone = this.environmentGroup.create(this.world.centerX, this.lowerWorldBoundY, 'stones', "elementStone015.png");
-    stone.anchor.setTo(0.5,1.0);
+    // stones
+    let stone1 = this.environmentGroup.create(this.world.centerX, this.lowerWorldBoundY-32, 'stones', "elementStone009.png");
+    stone1.anchor.setTo(0.5);
+    stone1.isTriangle = true; // set triangle flag for changing shape
+    let stone2  = this.environmentGroup.create(this.world.centerX, this.lowerWorldBoundY-103, 'stones', "elementStone015.png");
+    stone2.anchor.setTo(0.5);
+    // stone = this.environmentGroup.create(this.world.centerX, this.lowerWorldBoundY-200, 'stones', "elementStone016.png");
+    // stone.anchor.setTo(0.5);
 
 
     // buttons
@@ -141,9 +157,25 @@ Tutorial.Game.prototype =
 
 
   },
+  pushBall: function()
+  {
+    this.characterGroup.forEachAlive(
+      (member) =>
+      {
+        if (!member.body) return;
+
+        // random velocity
+        member.body.velocity.y = this.rnd.integerInRange(-500, 500);
+        member.body.velocity.x = this.rnd.integerInRange(-500, 500);
+
+      }, this);
+
+  },
   update: function()
   {
+    // enable collisions
     this.game.physics.arcade.collide(this.characterGroup, this.environmentGroup);
+    this.game.physics.arcade.collide(this.environmentGroup, this.environmentGroup);
 
     // collide with lower world bounds
     this.game.physics.arcade.collide(this.environmentGroup, this.customBottomBoundArcade);
@@ -227,7 +259,7 @@ Tutorial.Game.prototype =
         break;
     }
     this.game.debug.text("Press [1,2,3] to change Physics Systems - active: " + activePhysicsText, 5, Tutorial.SCREEN_HEIGHT - 30);
-    this.game.debug.text("Press [D] to toggle bounding boxes.", 5, Tutorial.SCREEN_HEIGHT - 10);
+    this.game.debug.text("Click on ball to push it and press [D] to toggle bounding boxes.", 5, Tutorial.SCREEN_HEIGHT - 10);
 
     // bounding boxes
 
@@ -252,7 +284,5 @@ Tutorial.Game.prototype =
 
     this.showBoundingBoxes();
   }
-
-
 
 };

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="5" height="4" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="elementStone009" tilewidth="140" tileheight="70" tilecount="1" columns="1">
+  <image source="elementStone009.png" width="140" height="70"/>
+  <tile id="0">
+   <objectgroup draworder="index">
+    <object id="2" x="70" y="1.5">
+     <polygon points="0,0 68.5,66.5 -69,67"/>
+    </object>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="5" height="4">
+  <data encoding="csv">
+0,0,0,0,0,
+0,0,0,0,0,
+1,0,0,0,0,
+0,0,0,0,0
+</data>
+ </layer>
+</map>
