@@ -11,4 +11,5 @@ window.onload = function()
 
     // start Title state
     Tutorial.phasergame.state.start('Boot');
+
 };
