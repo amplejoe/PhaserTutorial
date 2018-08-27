@@ -25,7 +25,7 @@ Tutorial.Load.prototype =
 
     // assets
     this.load.image("bg", 'assets/sprites/kenney_physicsAssets_v2/bgs/colored_grass.png');
-    this.load.atlasJSONHash('crow', "assets/sprites/JSON_Crow/crow.png", "assets/sprites/JSON_Crow/crow.json");
+    this.load.atlasJSONHash('crow', "assets/sprites/JSON_crow/crow.png", "assets/sprites/JSON_crow/crow.json");
 
   },
   loadUpdate: function()
